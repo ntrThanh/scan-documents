@@ -98,6 +98,8 @@ def read_rgb(path):
     if not path.exists():
         raise FileNotFoundError(f"Không tìm thấy file: {path}")
     img = cv2.imread(str(path))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
     if img is None:
         raise ValueError(f"Không thể đọc ảnh: {path}")
     print(f"[read_rgb] {path.name} → shape={img.shape}, dtype={img.dtype}")
